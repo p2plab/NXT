@@ -54,7 +54,8 @@ var NRS = (function(NRS, $) {
 		"hi": "हिन्दी (Experimental)",  // hindi
 		"id": "Bahasa Indonesia",        // indonesian
 		"it": "Italiano",                // italian
-		"ja": "日本語",                   // japanese
+		"ja": "日本語",                    // japanese
+		"ko": "한국어",                    // korean
 		"lt": "Lietuviškai",             // lithuanian
 		"nl": "Nederlands",              // dutch
 		"cs": "Čeština (Beta)",          // czech
