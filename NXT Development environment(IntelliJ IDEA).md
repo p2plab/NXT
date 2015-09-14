@@ -19,16 +19,21 @@ https://www.jetbrains.com/idea/download/download_thanks.jsp
 3. 인텔리제이 빈 프로젝트 생성
 
 	```
-	File->New...
+	Menu->File->New...
 	```
 4. 소스 & 라이브러리 추가
 	
 	```
-	File->Project Structure...
+	Menu->File->Project Structure...
 	Project SDK: 자바 1.8 이상
 	Project Language Level: 8 - Lambdas,type annotations etc
 	${NXT}/src
 	${NXT}/lib
+	```
+5. 실행 & 디버깅 
+	```
+	Menu->Run->Edit Configuration... 다음 파라메터 추가
+	VM Options: -cp classes:lib/*:conf -Dnxt.runtime.mode=desktop nxt.Nxt
 	```
 
 
