@@ -24,12 +24,17 @@ https://www.jetbrains.com/idea/download/download_thanks.jsp
 4. 소스 & 라이브러리 추가
 	
 	```
-	Menu->File->Project Structure...
+	Menu->File->Project Structure 다이얼로그
 	Project SDK: 자바 1.8 이상
 	Project Language Level: 8 - Lambdas,type annotations etc
+	
+	Menu->File->Project Structure 다이얼로그 -> Project Settings ->Modules 소스 추가
 	${NXT}/src
+	
+	Project Structure 다이얼로그 -> Project Settings ->Libraries 라이브러리 추가
 	${NXT}/lib
 	```
+	
 5. 실행 & 디버깅 
 
 	```
