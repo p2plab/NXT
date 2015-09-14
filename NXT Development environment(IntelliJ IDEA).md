@@ -31,6 +31,7 @@ https://www.jetbrains.com/idea/download/download_thanks.jsp
 	${NXT}/lib
 	```
 5. 실행 & 디버깅 
+
 	```
 	Menu->Run->Edit Configuration... 다음 파라메터 추가
 	VM Options: -cp classes:lib/*:conf -Dnxt.runtime.mode=desktop nxt.Nxt
