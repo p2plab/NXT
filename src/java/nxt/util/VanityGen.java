@@ -5,13 +5,14 @@ package nxt.util;
  *
  * origin from https://github.com/metrospark/nfdmirror/blob/master/src/java/nfd/util/VanityGen.java
  */
-        
+
 import java.util.Random;
 
 import nxt.crypto.Crypto;
 import nxt.util.Convert;
 
 public class VanityGen {
+
 
     /**
      * @param args
@@ -24,23 +25,46 @@ public class VanityGen {
         String specialCharacters = "!@#$%^&*";
         String accountId;
         String randomSecret = null;
+        byte[] pubKey = null;
         int maxLength = 19;
         long counter = 0;
         System.out.println("counter\t\t" + ", acount length\t" + ", accountId\t" + ", randomSecret\t, DDX-ID");
         while (true) {
             counter++;
             randomSecret = generate(35, someDigits, alphabet, specialCharacters);
-            long accounIdLong = getId(Crypto.getPublicKey(randomSecret));
+            pubKey = Crypto.getPublicKey(randomSecret);
+            long accounIdLong = getId(pubKey);
+
+            //Convert.toString(publicKey);
             accountId = Convert.toUnsignedLong(accounIdLong);
             if (accountId.length() < maxLength || accountId.length() < 11) {
+
+                //System.out.print(pubkeyToPrettyPrint(pubKey) + "\t,");
                 maxLength = accountId.length();
-                System.out.println(counter + "\t\t, " + accountId.length() + "\t, " + accountId + "\t, " + randomSecret
-                        + "\t, NXT-" + Crypto.rsEncode(accounIdLong));
+                System.out.printf("[%09d],\t{%s},\t%d,\t%s,\t%s,\t%s\n",
+                        counter,
+                        pubkeyToPrettyPrint(pubKey),
+                        accountId.length(),
+                        accountId,
+                        randomSecret,
+                        "NXT-" + Crypto.rsEncode(accounIdLong));
             }
 
         }
 
     }
+
+    public static String pubkeyToPrettyPrint(byte[] pubkey){
+        StringBuffer buf = new StringBuffer();
+        for(int i=0; i< pubkey.length; i++){
+            buf.append((int)pubkey[i]) ;
+            if(i+1 != pubkey.length)
+                buf.append(',');
+        }
+        return buf.toString();
+    }
+
+
 
     public static Long getId(byte[] publicKey) {
         byte[] publicKeyHash = Crypto.sha256().digest(publicKey);
