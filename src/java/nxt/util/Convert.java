@@ -253,4 +253,18 @@ public final class Convert {
         }
     }
 
+
+    public static String toUnsignedLong(long objectId) {
+        if (objectId >= 0) {
+            return String.valueOf(objectId);
+        }
+        BigInteger id = BigInteger.valueOf(objectId).add(two64);
+        return id.toString();
+    }
+
+    public static long nullToZero(Long l) {
+        return l == null ? 0 : l;
+    }
+
+
 }
